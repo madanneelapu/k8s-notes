@@ -16,4 +16,4 @@
 
 - **Kube proxy** is responsible for  Pod-to-pod networking and communication
 
-[Refer for diagram](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day05#apiserver---client-interacts-with-the-cluster-using-apiserver)
+[Refer for diagram](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day05#kubernetes-architecture)
