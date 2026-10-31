@@ -5,12 +5,10 @@ There are three types:
 1. **Liveness** Probe: Is the application alive?
     - Checks whether the application is still functioning.
     - If it fails, Kubernetes restarts the container.
-    - Example: Application is stuck or deadlocked.
   
 2. **Readiness** Probe: Is the application ready to handle requests?
     - If it fails, Kubernetes removes the Pod from Service endpoints.
-    - Container is NOT restarted.
-    - Example: Application is starting up or database connection is not ready.
+    - Container is NOT restarted. Only Stop sending traffic to Pod.
   
 3. **Startup** Probe: Has the application finished starting?
     - Useful for applications with slow startup.
