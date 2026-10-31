@@ -18,56 +18,7 @@ There are three types:
     - If it fails beyond the configured threshold, Kubernetes restarts the container.
 
 
-### 1. Maven dependency
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-actuator</artifactId>
-</dependency>
-```
-
-### 2. Spring Boot configuration – `application.yml`
-
-```yaml
-server:
-  port: 8080
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health  # Expose the health endpoint over HTTP
-
-  endpoint:
-    health:
-      probes:
-        enabled: true    # Enable Kubernetes liveness/readiness health groups
-
-      show-details: always
-
-  health:
-    livenessstate:
-      enabled: true      # Enable liveness health indicator
-    readinessstate:
-      enabled: true      # Enable readiness health indicator
-```
-
-### 3. Example REST controller
-
-```java
-@RestController
-@RequestMapping("/api/orders")
-public class OrderController {
-
-    @GetMapping
-    public String getOrders() {
-        return "Orders retrieved successfully";
-    }
-}
-```
-
-### 4. Kubernetes Deployment YAML
+### Kubernetes Deployment YAML
 
 This includes all probe configuration options.
 
@@ -138,7 +89,7 @@ spec:
             successThreshold: 1
 ```
 
-### 5. Other available probe configurations
+### Other available probe configurations
 
 You can use these instead of `httpGet`.
 
@@ -175,7 +126,7 @@ livenessProbe:
 
 Uses the gRPC health checking protocol.
 
-### 6. Important additional configuration
+### Important additional configuration
 
 Kubernetes also supports:
 
@@ -187,4 +138,30 @@ Kubernetes also supports:
 | `port`                          | Container port or named port                                                 |
 | `scheme`                        | HTTP or HTTPS                                                                |
 
+
+### Example Spring Boot configuration – `application.yml`
+
+```yaml
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health  # Expose the health endpoint over HTTP
+
+  endpoint:
+    health:
+      probes:
+        enabled: true    # Enable Kubernetes liveness/readiness health groups
+
+      show-details: always
+
+  health:
+    livenessstate:
+      enabled: true      # Enable liveness health indicator
+    readinessstate:
+      enabled: true      # Enable readiness health indicator
+```
 
