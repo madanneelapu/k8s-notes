@@ -1,4 +1,3 @@
-Below is a complete Spring Boot + Actuator + Kubernetes health probe example.
 
 ### 1. Maven dependency
 
