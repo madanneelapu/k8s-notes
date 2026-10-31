@@ -81,9 +81,3 @@ spring:
 ```
 
 
-
-
-
-  Service URLs         API keys
-  Feature flags        Passwords
-```
