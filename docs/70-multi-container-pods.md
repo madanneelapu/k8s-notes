@@ -65,6 +65,31 @@ spec:
       emptyDir: {}
 ```
 
+### Native Sidecar Containers
+
+- A Kubernetes feature that allows sidecars to be defined as restartable Init Containers.
+- Declared under `initContainers` with `restartPolicy: Always`.
+- Starts before the main application container.
+- Continues running alongside the application.
+- During normal Pod shutdown, application containers terminate before sidecars.
+- Provides better startup and shutdown ordering.
+
+Example: Spring Boot + Fluent Bit
+
+```
+spec:
+  initContainers:
+    - name: fluent-bit
+      image: fluent/fluent-bit:3.2
+      restartPolicy: Always
+
+  containers:
+    - name: spring-boot
+      image: order-service:1.0
+```
+
+Key distinction: Traditional sidecar → `containers`; Native sidecar → `initContainers` with `restartPolicy: Always`.
+
 ### 3. Comparison
 
 | Init Container              | Sidecar Container          |
