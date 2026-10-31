@@ -14,3 +14,20 @@ flowchart LR
 ```
 
 
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-nginx-service
+  labels:
+    env: demo
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30001
+```
+
