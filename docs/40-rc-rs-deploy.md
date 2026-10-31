@@ -76,16 +76,17 @@ kubectl scale --replicas=10 rs/nginx-rs
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-rs
+  name: nginx-deployment
   labels:
     env: demo
 spec:
   template:
     metadata:
-      name: nginx-deploy
+      name: nginx-pod
       labels:
         env: demo
         type: frontend
+        app: nginx
     spec:
       containers:
         - name: nginx-container
