@@ -31,3 +31,26 @@ spec:
       nodePort: 30001
 ```
 
+#### ClusterIP
+
+- Default Kubernetes Service type.
+- Used for internal communication within the cluster.
+- Provides a stable internal IP and DNS name for accessing Pods.
+- Not directly accessible from outside the cluster.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip-nginx-service
+  labels:
+    env: demo
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80
+```
+
