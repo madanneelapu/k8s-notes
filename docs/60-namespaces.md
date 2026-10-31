@@ -16,6 +16,8 @@ Pods in different namespaces can communicate using the Service DNS name.
 - Different namespace: `http://payment-service.finance:8080`
 - Fully qualified domain name (FQDN): `payment-service.finance.svc.cluster.local`
 
+- `<service>.<namespace>.svc.cluster.local`
+
 ### Commands
 #### DNS configuration
 Check a Pod's DNS configuration:
