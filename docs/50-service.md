@@ -12,3 +12,5 @@ flowchart LR
     A["External Client"] -->|"NodePort: 30080"| B["Service: 8080"]
     B -->|"targetPort: 80"| C["Nginx Pod: 80"]
 ```
+
+
