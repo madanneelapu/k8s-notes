@@ -54,3 +54,42 @@ spec:
       targetPort: 80
 ```
 
+#### LoadBalancer
+
+
+#### LoadBalancer
+
+- Exposes a Kubernetes Service externally using a cloud provider's load balancer.
+- Primarily used to expose applications to clients outside the cluster.
+- Kubernetes requests a load balancer from the underlying infrastructure (AWS, Azure, GCP, etc.).
+- The load balancer forwards traffic to the Kubernetes Service, which routes it to matching Pods.
+
+Request flow:
+
+External Client → Cloud Load Balancer → Service → Application Pod
+
+Example:
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80
+```
+
+### Comparison
+
+| Service type | Purpose                                          |
+| ------------ | ------------------------------------------------ |
+| ClusterIP    | Internal cluster communication                   |
+| NodePort     | Expose service through node ports                |
+| LoadBalancer | Expose service through an external load balancer |
+
+AWS example: In EKS, a LoadBalancer Service can provision an AWS Network Load Balancer (NLB), depending on the configured load balancer controller and annotations.
