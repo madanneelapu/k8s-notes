@@ -87,7 +87,7 @@ spec:
 ##### Disadvantages:
 - Cloud provider dependent.
 - Spins up a Load Balancer for each service. Costly!!
-- Security issues
+- Security issues: Each service may require separate security rules, firewall configurations, TLS configuration and access policies. More endpoints to manage and secure.
 - This is where ingress comes into play
 
 
