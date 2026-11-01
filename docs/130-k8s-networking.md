@@ -1,5 +1,9 @@
 ## K8s Networking
 
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/f47a4a09-6051-4595-8886-c3883f4bbf14" />
+
+
 - Docker was used to be bundled into k8s core. This is heavy.
 - But then OCI came: Open Container Initiative. Plug and play any container runtime. Specifications for container images and execution.
 - OCI defines:
