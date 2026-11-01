@@ -84,6 +84,13 @@ spec:
       targetPort: 80
 ```
 
+##### Disadvantages:
+- Cloud provider dependent.
+- Spins up a Load Balancer for each service. Costly!!
+- Security issues
+- This is where ingress comes into play
+
+
 ### Comparison
 
 | Service type | Purpose                                          |
