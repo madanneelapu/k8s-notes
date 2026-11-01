@@ -88,6 +88,7 @@ spec:
 - Cloud provider dependent.
 - Spins up a Load Balancer for each service. Costly!!
 - Security issues: Each service may require separate security rules, firewall configurations, TLS configuration and access policies. More endpoints to manage and secure.
+- k8s service provides only round robin load balancing
 - This is where ingress comes into play
 
 
