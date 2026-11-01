@@ -71,7 +71,3 @@ Payment Pod
 
 CoreDNS watches Kubernetes Services and EndpointSlices and maintains the DNS records.
 
-
-Kubernetes+2
-
-Key distinction: CoreDNS handles name resolution; CNI handles network connectivity. Both are needed for reliable cluster communication.
