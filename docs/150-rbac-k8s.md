@@ -131,6 +131,7 @@ kubectl describe rolebinding john-pod-reader -n dev
 kubectl describe clusterrole node-reader -o yaml
 kubectl describe clusterrolebinding john-node-reader -o yaml
 
+# Check permissions - Useful for debugging permission issues
 kubectl auth can-i get pods --as=john -n dev
 
 kubectl auth can-i delete pods --as=john -n dev
