@@ -13,7 +13,7 @@
 - Role: Defines what actions are permitted on which resources within a **namespace**.
 - RoleBinding: Assigns that Role's permissions to a user, group, or service account.
 
-Example:
+#### Example:
 - A Role allows `get`, `list` and `watch` on Pods in a given **namespace**.
 - A RoleBinding assigns that Role to user `john`.
 
@@ -47,4 +47,41 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
+### ClusterRole and ClusterRoleBinding
+- ClusterRole: Defines permissions at the cluster level. Can cover cluster-wide resources (Nodes, Namespaces) or namespaced resources (Pods, Deployments).
+- ClusterRoleBinding: Assigns those permissions cluster-wide to a user, group, or service account.
 
+#### Example
+
+ClusterRole – Allow viewing Nodes
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: node-reader
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+```
+
+ClusterRoleBinding – Assign to John
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: john-node-reader
+subjects:
+  - kind: User
+    name: john
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: node-reader
+  apiGroup: rbac.authorization.k8s.io
+```
+
+
+Important: A ClusterRole can also be assigned through a RoleBinding, restricting its namespaced permissions to that particular namespace.
