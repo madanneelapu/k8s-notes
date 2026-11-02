@@ -16,6 +16,7 @@
 #### Example:
 - A Role allows `get`, `list` and `watch` on Pods in a given **namespace**.
 - A RoleBinding assigns that Role to user `john`.
+- If you do not specify a namespace when creating a Role or RoleBinding in Kubernetes, they default to the `default` namespace.
 
 Result: John can view Pods in that namespace but cannot create or delete them.
 
@@ -51,7 +52,7 @@ roleRef:
 - ClusterRole: Defines permissions at the cluster level. Can cover cluster-wide resources (Nodes, Namespaces) or namespaced resources (Pods, Deployments).
 - ClusterRoleBinding: Assigns those permissions cluster-wide to a user, group, or service account.
 
-#### Example
+#### Example A
 
 ClusterRole – Allow viewing Nodes
 
@@ -83,5 +84,35 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-
+#### Example B
 Important: A ClusterRole can also be assigned through a RoleBinding, restricting its namespaced permissions to that particular namespace.
+
+ClusterRole – Allow viewing Pods
+
+```yaml
+kind: ClusterRole
+metadata:
+  name: pod-reader
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+```
+
+RoleBinding – Assign to John with namespace set
+
+```yaml
+kind: RoleBinding
+metadata:
+  name: pod-reader-binding
+  namespace: dev
+subjects:
+  - kind: User
+    name: john
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
+```
+
