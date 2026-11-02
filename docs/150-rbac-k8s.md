@@ -116,3 +116,27 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
+### Few important commands
+
+```
+kubectl get roles -A
+kubectl get rolebindings -A
+
+kubectl get clusterroles
+kubectl get clusterrolebindings
+
+kubectl describe role pod-reader -n dev
+kubectl describe rolebinding john-pod-reader -n dev
+
+kubectl describe clusterrole node-reader -o yaml
+kubectl describe clusterrolebinding john-node-reader -o yaml
+
+kubectl auth can-i get pods --as=john -n dev
+
+kubectl auth can-i delete pods --as=john -n dev
+
+kubectl auth can-i list nodes --as=john
+
+kubectl auth can-i --list --as=john -n dev
+
+```
