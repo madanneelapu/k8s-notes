@@ -15,7 +15,7 @@ kubectl taint nodes node-2 workload=database:NoSchedule
 - `PreferNoSchedule` =	Avoid scheduling, if possible
 - `NoExecute` =	Evict existing non-tolerating Pods and prevent new ones
 
-##### What is a taint on a node is altered after pods are already scheduled on it?
+##### What if a taint on a node is altered after pods are already scheduled on it?
 
 | Taint effect       | New Pods                                 | Existing Pods              |
 | ------------------ | ---------------------------------------- | -------------------------- |
