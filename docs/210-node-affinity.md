@@ -33,7 +33,7 @@
 
 Required Node Affinity
 
-```
+```yaml
 affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
@@ -46,7 +46,7 @@ affinity:
 
 Preferred Node Affinity
 
-```
+```yaml
 affinity:
   nodeAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
@@ -87,19 +87,19 @@ Production use case: Dedicated GPU nodes for AI workloads.
 
 Step 1: Label GPU node
 
-```
+```powershell
 kubectl label node gpu-node-1 workload=ai
 ```
 
 Step 2: Taint GPU node
 
-```
+```powershell
 kubectl taint nodes gpu-node-1 workload=ai:NoSchedule
 ```
 
 Step 3: AI Pod configuration
 
-```
+```yaml
 spec:
   tolerations:
     - key: workload
