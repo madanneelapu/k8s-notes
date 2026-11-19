@@ -13,5 +13,3 @@
 - efficient node autoscaler
 - AWS -> CNCF
 - automatically launches appropriate worker nodes without node groups
-
-- 
